@@ -1,0 +1,309 @@
+<html><head><title>Stamped By RazzorBack</title>
+           <script type="text/javascript">
+
+
+
+var snowmax=35
+
+var snowcolor=new Array("#AAAACC","#DDDDFF","#CCCCDD","#F3F3F3","#F0FFFF")
+
+var snowtype=new Array("Arial Black","Arial Narrow","Times","Comic Sans MS")
+
+var snowletter="*"
+
+var sinkspeed=0.6
+
+var snowmaxsize=22
+
+var snowminsize=8
+
+var snowingzone=1
+
+
+
+// Do not edit below this line
+
+var snow=new Array()
+
+var marginbottom
+
+var marginright
+
+var timer
+
+var i_snow=0
+
+var x_mv=new Array();
+
+var crds=new Array();
+
+var lftrght=new Array();
+
+var browserinfos=navigator.userAgent 
+
+var ie5=document.all&&document.getElementById&&!browserinfos.match(/Opera/)
+
+var ns6=document.getElementById&&!document.all
+
+var opera=browserinfos.match(/Opera/)  
+
+var browserok=ie5||ns6||opera
+
+
+
+function randommaker(range) {       
+
+    rand=Math.floor(range*Math.random())
+
+    return rand
+
+}
+
+
+
+function initsnow() {
+
+    if (ie5 || opera) {
+
+        marginbottom = document.body.clientHeight
+
+        marginright = document.body.clientWidth
+
+    }
+
+    else if (ns6) {
+
+        marginbottom = window.innerHeight
+
+        marginright = window.innerWidth
+
+    }
+
+    var snowsizerange=snowmaxsize-snowminsize
+
+    for (i=0;i<=snowmax;i++) {
+
+        crds[i] = 0;                      
+
+        lftrght[i] = Math.random()*15;         
+
+        x_mv[i] = 0.03 + Math.random()/10;
+
+        snow[i]=document.getElementById("s"+i)
+
+        snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+
+        snow[i].size=randommaker(snowsizerange)+snowminsize
+
+        snow[i].style.fontSize=snow[i].size
+
+        snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+
+        snow[i].sink=sinkspeed*snow[i].size/5
+
+        if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+
+        if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+
+        if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+
+        if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+
+        snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size)
+
+        snow[i].style.left=snow[i].posx
+
+        snow[i].style.top=snow[i].posy
+
+    }
+
+    movesnow()
+
+}
+
+
+
+function movesnow() {
+
+    for (i=0;i<=snowmax;i++) {
+
+        crds[i] += x_mv[i];
+
+        snow[i].posy+=snow[i].sink
+
+        snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i]);
+
+        snow[i].style.top=snow[i].posy
+
+        
+
+        if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])){
+
+            if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+
+            if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+
+            if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+
+            if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+
+            snow[i].posy=0
+
+        }
+
+    }
+
+    var timer=setTimeout("movesnow()",50)
+
+}
+
+
+
+for (i=0;i<=snowmax;i++) {
+
+    document.write("<span id='s"+i+"' style='position:absolute;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+
+}
+
+if (browserok) {
+
+    window.onload=initsnow
+
+}
+
+</script></head><body bgcolor="teal"><span id="s0" style="position: absolute; top: 229.2px; font-family: &quot;Arial Narrow&quot;; font-size: 10px; color: rgb(243, 243, 243); left: 489.177px;">*</span><span id="s1" style="position: absolute; top: 507px; font-family: &quot;Arial Black&quot;; font-size: 10px; color: rgb(170, 170, 204); left: 340.775px;">*</span><span id="s2" style="position: absolute; top: 601.44px; font-family: Times; font-size: 14px; color: rgb(221, 221, 255); left: 978.323px;">*</span><span id="s3" style="position: absolute; top: 135.72px; font-family: &quot;Comic Sans MS&quot;; font-size: 13px; color: rgb(170, 170, 204); left: 1248.28px;">*</span><span id="s4" style="position: absolute; top: 335.4px; font-family: &quot;Arial Narrow&quot;; font-size: 13px; color: rgb(221, 221, 255); left: 1165.38px;">*</span><span id="s5" style="position: absolute; top: 62.4px; font-family: Times; font-size: 20px; color: rgb(221, 221, 255); left: 895.287px;">*</span><span id="s6" style="position: absolute; top: 558.96px; font-family: Times; font-size: 17px; color: rgb(221, 221, 255); left: 918.466px;">*</span><span id="s7" style="position: absolute; top: 307.8px; font-family: &quot;Comic Sans MS&quot;; font-size: 19px; color: rgb(170, 170, 204); left: 541.588px;">*</span><span id="s8" style="position: absolute; top: 244.44px; font-family: &quot;Arial Narrow&quot;; font-size: 21px; color: rgb(170, 170, 204); left: 419.389px;">*</span><span id="s9" style="position: absolute; top: 122.4px; font-family: &quot;Comic Sans MS&quot;; font-size: 20px; color: rgb(204, 204, 221); left: 847.393px;">*</span><span id="s10" style="position: absolute; top: 84.36px; font-family: &quot;Arial Black&quot;; font-size: 19px; color: rgb(240, 255, 255); left: 469.392px;">*</span><span id="s11" style="position: absolute; top: 251.16px; font-family: &quot;Arial Narrow&quot;; font-size: 13px; color: rgb(170, 170, 204); left: 661.721px;">*</span><span id="s12" style="position: absolute; top: 344.4px; font-family: Times; font-size: 10px; color: rgb(240, 255, 255); left: 560.142px;">*</span><span id="s13" style="position: absolute; top: 628.8px; font-family: &quot;Arial Black&quot;; font-size: 20px; color: rgb(221, 221, 255); left: 614.707px;">*</span><span id="s14" style="position: absolute; top: 570.24px; font-family: &quot;Arial Black&quot;; font-size: 16px; color: rgb(240, 255, 255); left: 1186.98px;">*</span><span id="s15" style="position: absolute; top: 514.08px; font-family: &quot;Arial Narrow&quot;; font-size: 17px; color: rgb(240, 255, 255); left: 279.157px;">*</span><span id="s16" style="position: absolute; top: 205.2px; font-family: Times; font-size: 19px; color: rgb(221, 221, 255); left: 1287.06px;">*</span><span id="s17" style="position: absolute; top: 80.64px; font-family: &quot;Comic Sans MS&quot;; font-size: 16px; color: rgb(243, 243, 243); left: 851.208px;">*</span><span id="s18" style="position: absolute; top: 199.68px; font-family: Times; font-size: 13px; color: rgb(204, 204, 221); left: 416.983px;">*</span><span id="s19" style="position: absolute; top: 434.4px; font-family: Times; font-size: 10px; color: rgb(204, 204, 221); left: 396.871px;">*</span><span id="s20" style="position: absolute; top: 41.04px; font-family: &quot;Arial Narrow&quot;; font-size: 19px; color: rgb(204, 204, 221); left: 718.761px;">*</span><span id="s21" style="position: absolute; top: 144.84px; font-family: &quot;Arial Black&quot;; font-size: 17px; color: rgb(240, 255, 255); left: 287.057px;">*</span><span id="s22" style="position: absolute; top: 451.08px; font-family: Times; font-size: 21px; color: rgb(243, 243, 243); left: 173.766px;">*</span><span id="s23" style="position: absolute; top: 348px; font-family: &quot;Arial Narrow&quot;; font-size: 10px; color: rgb(221, 221, 255); left: 838.688px;">*</span><span id="s24" style="position: absolute; top: 347.76px; font-family: &quot;Arial Black&quot;; font-size: 21px; color: rgb(221, 221, 255); left: 627.938px;">*</span><span id="s25" style="position: absolute; top: 391.8px; font-family: &quot;Arial Narrow&quot;; font-size: 8px; color: rgb(221, 221, 255); left: 1067.63px;">*</span><span id="s26" style="position: absolute; top: 6.6px; font-family: &quot;Arial Narrow&quot;; font-size: 11px; color: rgb(240, 255, 255); left: 595.058px;">*</span><span id="s27" style="position: absolute; top: 613px; font-family: Times; font-size: 10px; color: rgb(243, 243, 243); left: 120.778px;">*</span><span id="s28" style="position: absolute; top: 246.6px; font-family: Times; font-size: 15px; color: rgb(204, 204, 221); left: 911.994px;">*</span><span id="s29" style="position: absolute; top: 535.68px; font-family: Times; font-size: 12px; color: rgb(240, 255, 255); left: 561.96px;">*</span><span id="s30" style="position: absolute; top: 532.8px; font-family: &quot;Arial Black&quot;; font-size: 12px; color: rgb(240, 255, 255); left: 657.866px;">*</span><span id="s31" style="position: absolute; top: 393.12px; font-family: &quot;Arial Narrow&quot;; font-size: 14px; color: rgb(221, 221, 255); left: 943.284px;">*</span><span id="s32" style="position: absolute; top: 102.96px; font-family: Times; font-size: 13px; color: rgb(221, 221, 255); left: 610.897px;">*</span><span id="s33" style="position: absolute; top: 391.2px; font-family: &quot;Arial Black&quot;; font-size: 20px; color: rgb(240, 255, 255); left: 789.04px;">*</span><span id="s34" style="position: absolute; top: 447.72px; font-family: Times; font-size: 13px; color: rgb(240, 255, 255); left: 1285.98px;">*</span><span id="s35" style="position: absolute; top: 143.88px; font-family: &quot;Comic Sans MS&quot;; font-size: 11px; color: rgb(240, 255, 255); left: 824.48px;">*</span>
+
+
+<link rel="icon" type="image/x-icon" href="https://z-m-scontent.fpku2-1.fna.fbcdn.net/v/t1.0-9/fr/cp0/e15/q65/17426157_1532298540113540_9003529494707530789_n.jpg" revision="" latest?cb="20120927033254&quot;">
+
+
+
+<meta name="title" content="Stamped By RazzorBack">
+
+
+
+<meta name="description" content="Fucking Media">
+
+
+
+<meta name="keywords" content="Fucking Media">
+
+
+
+<meta name="googlebot" content="index,follow">
+
+
+
+<meta name="robots" content="all">
+
+
+
+<meta name="robots schedule" content="auto">
+
+
+
+<meta name="distribution" content="global">
+
+
+
+<meta contact="#">
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Shadows+Into+Light" rel="stylesheet"> 
+
+<center>
+
+<style>
+
+@keyframes shake {
+
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+
+}
+
+.kontol{
+
+    animation: shake 1s;
+
+    animation-iteration-count: infinite;
+
+    font-family: 'Shadows Into Light', cursive;
+
+    font-size:38px;
+
+}
+
+.filthyroot{
+
+    font-family: 'PT Sans Narrow', cursive;
+
+    font-size:20px;
+
+}
+
+.filthyroot:hover{
+
+    font-family: 'PT Sans Narrow', cursive;
+
+    font-size:20px;
+
+    animation: shake 1s;
+
+    animation-iteration-count: infinite;
+
+}
+
+a{
+
+    color:white;
+
+    text-decoration: none;
+
+}
+
+a:hover{
+
+    color:red;
+
+    text-decoration: underline;
+
+}
+
+
+
+</style>
+
+<font color="purple"><pre><br>
+
+
+<br><br><br>
+<p>
+    
+</p><div class="kontol"><h1>Its me? RazzorBack</h1></div><br>
+<p>
+<font color="white">'<font color="black">SECURITY <font color="white"> IS AN <font color="black">ILLUSION<font color="white">'
+
+
+</font></font></font></font></font></p></pre></font></center></body></html>
